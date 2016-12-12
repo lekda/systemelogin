@@ -12,7 +12,7 @@ $password2=$_POST['password2'];
 
 if($password==$password2){
 	$password=md5($password);
-	$sql="INSERT INTO utilisateurs(nom, prenom, mail, password) VALUES($nom', '$prenom', '$mail', '$password')";
+	$sql="INSERT INTO utilisateurs(nom, prenom, mail, password) VALUES('$nom', '$prenom', '$mail', '$password')";
 	mysql_query($sql, $db);
 	$_SESSION['message']="Bienvenue, " ;
 	$_SESSION['prenom']=$prenom;
