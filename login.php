@@ -18,7 +18,7 @@ if($password==$password2){
 	$_SESSION['prenom']=$prenom;
 	header('location:accueil.php');
 	}else{
-		$_SESSION['message']="Veuillez retaper votre mot de passe";
+		echo "Veuillez retaper votre mot de passe";
 	}
 }
 ?>	
