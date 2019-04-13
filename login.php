@@ -9,11 +9,12 @@ $prenom=$_POST['prenom'];
 $mail=$_POST['mail'];
 $password=$_POST['password'];
 $password2=$_POST['password2'];
-
+	
 if($password==$password2){
 	$password=md5($password);
-	$sql="INSERT INTO utilisateurs(nom, prenom, mail, password) VALUES('$nom', '$prenom', '$mail', '$password')";
-	mysql_query($sql, $db);
+	$sql = $db->prepare("INSERT INTO utilisateurs(nom, prenom, mail, password) VALUES(:nom, :prenom, :mail, :password)");
+	$sql -> bind_param('ssss','$name','$prenom','$mail','$password');
+	$sql -> execute();
 	$_SESSION['message']="Bienvenue, " ;
 	$_SESSION['prenom']=$prenom;
 	header('location:accueil.php');
